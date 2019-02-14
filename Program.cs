@@ -7,10 +7,10 @@ namespace Dealership {
   {
     public static void Main()
     {
-      Car porsche = new Car("2014 Porsche 911", 114991, 7864);
-      Car ford = new Car("2011 Ford F450", 55995, 14241);
-      Car lexus = new Car("2013 Lexus RX 350", 44700, 20000);
-      Car mercedes = new Car("Mercedes Benz CLS550", 39900, 37979);
+      Car porsche = new Car("2014 Porsche 911", 114991, 7864, "This car goes really fast!");
+      Car ford = new Car("2011 Ford F450", 55995, 14241, "Our logo is really straight-forward.");
+      Car lexus = new Car("2013 Lexus RX 350", 44700, 20000, "Made in Japan.");
+      Car mercedes = new Car("Mercedes Benz CLS550", 39900, 37979, "Every 'e' is pronounced differently!");
 
       List<Car> Cars = new List<Car>() { porsche, ford, lexus, mercedes };
 
@@ -18,11 +18,15 @@ namespace Dealership {
       string stringMaxPrice = Console.ReadLine();
       int maxPrice = int.Parse(stringMaxPrice);
 
+      Console.WriteLine("Enter maximum mileage: ");
+      string stringMaxMiles = Console.ReadLine();
+      int maxMiles = int.Parse(stringMaxMiles);
+
       List<Car> CarsMatchingSearch = new List<Car>(0);
 
       foreach (Car automobile in Cars)
       {
-        if (automobile.WorthBuying(maxPrice))
+        if (automobile.WorthBuying(maxPrice, maxMiles))
         {
           CarsMatchingSearch.Add(automobile);
         }
@@ -34,6 +38,7 @@ namespace Dealership {
         Console.WriteLine(automobile.GetMakeModel());
         Console.WriteLine(automobile.GetMiles() + " miles");
         Console.WriteLine("$" + automobile.GetPrice());
+        Console.WriteLine(automobile.GetInfo());
       }
     }
   }
