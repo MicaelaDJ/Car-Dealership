@@ -30,6 +30,10 @@ namespace Dealership {
         {
           CarsMatchingSearch.Add(automobile);
         }
+        if (!(automobile.WorthBuying(maxPrice, maxMiles)))
+        {
+          Console.WriteLine("This car is not available per your criteria.");
+        }
       }
 
       foreach(Car automobile in CarsMatchingSearch)
